@@ -4,10 +4,10 @@ import { GlobalStyles } from "./styles/Global";
 
 function App() {
   return (
-    <div className="App">
+    <main>
       <GlobalStyles />
       <ImageUploading />
-    </div>
+    </main>
   );
 }
 

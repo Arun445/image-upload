@@ -11,7 +11,12 @@ import {
 } from "./upload-image.styles";
 import ReactS3Client from "react-aws-s3-typescript";
 
-function UploadImage() {
+interface UploadImageProps {
+  setIsImageRendered: any;
+}
+
+function UploadImage(props: UploadImageProps) {
+  const { setIsImageRendered } = props;
   const [imagePreviewUrl, setImagePreviewUrl] = useState<undefined | string>(
     undefined
   );
@@ -28,6 +33,7 @@ function UploadImage() {
     const isImage: boolean = e.target.files[0].type.includes("jpeg" && "image");
     if (!isImage) {
       setImagePreviewUrl(undefined);
+      setIsImageRendered(false);
       setError("You can only upload images");
       return false;
     }
@@ -36,6 +42,7 @@ function UploadImage() {
       setLoading(true);
       const response = await s3.uploadFile(imageUrl, imageName);
       setLoading(false);
+      setIsImageRendered(true);
       setImagePreviewUrl(response.location);
     } catch (exception: any) {
       setError(exception);

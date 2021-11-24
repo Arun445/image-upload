@@ -4,7 +4,12 @@ import FormInput from "../FormInput/FormInput.component";
 import React, { useState } from "react";
 import axios from "axios";
 
-function ImageInformation() {
+interface ImageInformationProps {
+  isImageRendered: boolean;
+}
+
+function ImageInformation(props: ImageInformationProps) {
+  const { isImageRendered } = props;
   const [imageData, setImageData]: any = useState("");
   const [loading, setLoading] = useState(false);
   const handleGenerateData = async () => {
@@ -18,57 +23,59 @@ function ImageInformation() {
 
   return (
     <div>
-      <Form>
-        <FormLabel>
-          <h1>Image Information</h1>
-          <CustomButton
-            type="button"
-            onClicks={() => {
-              handleGenerateData();
-            }}
-          >
-            <span>Generate data</span>
-            {loading && <Spinner />}
-          </CustomButton>
-        </FormLabel>
+      {isImageRendered && (
+        <Form>
+          <FormLabel>
+            <h1>Image Information</h1>
+            <CustomButton
+              type="button"
+              onClicks={() => {
+                handleGenerateData();
+              }}
+            >
+              <span>Generate data</span>
+              {loading && <Spinner />}
+            </CustomButton>
+          </FormLabel>
 
-        <FormInput
-          type="text"
-          required={true}
-          label="Default label"
-          defaultValue={imageData ? imageData["data0"] : ""}
-        ></FormInput>
-        <FormInput
-          type="text"
-          required={true}
-          label="Default label"
-          defaultValue={imageData ? imageData["data1"] : ""}
-        ></FormInput>
-        <FormInput
-          type="text"
-          required={true}
-          label="Default label"
-          defaultValue={imageData ? imageData["data2"] : ""}
-        ></FormInput>
-        <FormInput
-          type="text"
-          required={true}
-          label="Default label"
-          defaultValue={imageData ? imageData["data3"] : ""}
-        ></FormInput>
-        <FormInput
-          type="text"
-          required={true}
-          label="Default label"
-          defaultValue={imageData ? imageData["data4"] : ""}
-        ></FormInput>
-        <FormInput
-          type="text"
-          required={true}
-          label="Default label"
-          defaultValue={imageData ? imageData["data5"] : ""}
-        ></FormInput>
-      </Form>
+          <FormInput
+            type="text"
+            required={true}
+            label="Default label"
+            defaultValue={imageData ? imageData["data0"] : ""}
+          ></FormInput>
+          <FormInput
+            type="text"
+            required={true}
+            label="Default label"
+            defaultValue={imageData ? imageData["data1"] : ""}
+          ></FormInput>
+          <FormInput
+            type="text"
+            required={true}
+            label="Default label"
+            defaultValue={imageData ? imageData["data2"] : ""}
+          ></FormInput>
+          <FormInput
+            type="text"
+            required={true}
+            label="Default label"
+            defaultValue={imageData ? imageData["data3"] : ""}
+          ></FormInput>
+          <FormInput
+            type="text"
+            required={true}
+            label="Default label"
+            defaultValue={imageData ? imageData["data4"] : ""}
+          ></FormInput>
+          <FormInput
+            type="text"
+            required={true}
+            label="Default label"
+            defaultValue={imageData ? imageData["data5"] : ""}
+          ></FormInput>
+        </Form>
+      )}
     </div>
   );
 }
