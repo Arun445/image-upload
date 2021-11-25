@@ -6,11 +6,11 @@ interface ButtonProps {
 
 export const Button = styled.button<ButtonProps>`
   min-width: 165px;
+  max-width: 165px;
   width: auto;
   height: 50px;
   letter-spacing: 0.5px;
   line-height: 50px;
-  padding: 0 35px;
   font-size: 15px;
   background-color: ${({ btnColor }) => (btnColor ? btnColor : "black")};
   color: white;
@@ -20,6 +20,7 @@ export const Button = styled.button<ButtonProps>`
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   border: none;
 

@@ -1,16 +1,22 @@
 import styled from "styled-components";
 
-export const Form = styled.form`
+export const ContentContainer = styled.form`
   width: 25vw;
-
-  h1 {
-    padding-bottom: 40px;
-  }
+  display: flex;
+  flex-direction: column;
 `;
 
-export const FormLabel = styled.div`
+export const ContentLabel = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 50px;
+`;
+export const ImageInformationContainer = styled.div`
+  min-width: 35%;
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0 30px 50px;
 `;
 
 export const Spinner = styled.div`
@@ -22,8 +28,8 @@ export const Spinner = styled.div`
       transform: rotate(360deg);
     }
   }
-  border: 6px solid black; /* Light grey */
-  border-top: 6px solid white; /* Blue */
+  border: 6px solid black;
+  border-top: 6px solid white;
   border-radius: 50%;
   width: 30px;
   height: 30px;

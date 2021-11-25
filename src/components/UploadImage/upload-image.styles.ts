@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface UploadImageContainerProps {
+  isImageRendered: boolean;
+}
+
 export const Spinner = styled.div`
   @keyframes spinner {
     0% {
@@ -66,17 +70,21 @@ export const ImageContainer = styled.div`
     height: 100%;
   }
 `;
-export const UploadImageContainer = styled.div`
+export const UploadImageContainer = styled.div<UploadImageContainerProps>`
+  min-width: 35%;
+  flex: 1 1 auto;
   display: flex;
-  flex-direction: column;
-  width: 25vw;
-  height: 240px;
-
-  h1 {
-    padding-bottom: 30px;
-  }
+  justify-content: ${({ isImageRendered }) =>
+    isImageRendered ? "flex-end" : "center"};
+  margin: 0 50px 30px 0;
 `;
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 50px;
+`;
+export const ContentConatainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
 `;

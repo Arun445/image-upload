@@ -8,6 +8,7 @@ import {
   ImageContainer,
   UploadImageContainer,
   ButtonContainer,
+  ContentConatainer,
 } from "./upload-image.styles";
 import ReactS3Client from "react-aws-s3-typescript";
 
@@ -50,26 +51,28 @@ function UploadImage(props: UploadImageProps) {
   };
 
   return (
-    <UploadImageContainer>
-      <ButtonContainer>
-        <h1>Image Upload</h1>
-        <Label>
-          <span>Upload</span>
-          <Input type="file" onChange={uploadFile} />
-        </Label>
-      </ButtonContainer>
+    <UploadImageContainer isImageRendered={imagePreviewUrl ? true : false}>
+      <ContentConatainer>
+        <ButtonContainer>
+          <h1>Image Upload</h1>
+          <Label>
+            <span>Upload</span>
+            <Input type="file" onChange={uploadFile} />
+          </Label>
+        </ButtonContainer>
 
-      <ImageContainer>
-        {loading ? (
-          <Spinner />
-        ) : imagePreviewUrl ? (
-          <a href={imagePreviewUrl}>
-            <img src={imagePreviewUrl} alt="Preview" />
-          </a>
-        ) : (
-          error && <ErrorMessage>{error}</ErrorMessage>
-        )}
-      </ImageContainer>
+        <ImageContainer>
+          {loading ? (
+            <Spinner />
+          ) : imagePreviewUrl ? (
+            <a href={imagePreviewUrl}>
+              <img src={imagePreviewUrl} alt="Preview" />
+            </a>
+          ) : (
+            error && <ErrorMessage>{error}</ErrorMessage>
+          )}
+        </ImageContainer>
+      </ContentConatainer>
     </UploadImageContainer>
   );
 }
